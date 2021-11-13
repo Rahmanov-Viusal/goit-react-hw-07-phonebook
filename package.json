@@ -33,8 +33,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "prepare": "husky install",
-    "server": "json-server -p 2000 -d 500 -w db.json"
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
