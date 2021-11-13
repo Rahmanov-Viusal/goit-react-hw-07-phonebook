@@ -1,22 +1,22 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "../../redux/action-operations";
-import s from "./ContactForm.module.scss";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/operations';
+import s from './ContactForm.module.scss';
 
 function ContactForm() {
   const dispatch = useDispatch();
   const { items } = useSelector(state => state.contacts);
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleChange = e => {
     const value = e.currentTarget.name;
     switch (value) {
-      case "name":
+      case 'name':
         setName(e.currentTarget.value);
         break;
 
-      case "number":
+      case 'number':
         setNumber(e.currentTarget.value);
         break;
 
@@ -31,13 +31,17 @@ function ContactForm() {
       reset();
       return;
     }
-    dispatch(addContact(name, number));
+    const contact = {
+      name,
+      number,
+    };
+    dispatch(addContact(contact));
 
     reset();
   };
   const reset = () => {
-    setName("");
-    setNumber("");
+    setName('');
+    setNumber('');
   };
   return (
     <form className={s.form} onSubmit={onSubmitForm}>
