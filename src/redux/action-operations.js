@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   getContactError,
   getContactRequest,
@@ -9,14 +9,14 @@ import {
   deleteContactSuccess,
   deleteContactRequest,
   deleteContactError,
-} from "./actions";
+} from './actions';
 
-axios.defaults.baseURL = "http://localhost:2000";
+axios.defaults.baseURL = 'https://618d65e9fe09aa0017440724.mockapi.io';
 
 export const getContact = arg => async dispatch => {
   dispatch(getContactRequest());
   try {
-    const { data } = await axios.get("/contacts");
+    const { data } = await axios.get('/contacts');
     dispatch(getContactSuccess(data));
   } catch (error) {
     dispatch(getContactError(error));
@@ -31,7 +31,7 @@ export const addContact = (name, number) => async dispatch => {
   };
 
   try {
-    const { data } = await axios.post("/contacts", contact);
+    const { data } = await axios.post('/contacts', contact);
     dispatch(addContactSuccess(data));
   } catch (error) {
     dispatch(addContactError(error));
